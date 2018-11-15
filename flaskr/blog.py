@@ -33,6 +33,8 @@ def create():
             flash(error)
         else:
             db = get_db()
+            if g.user['id'] > 5:
+                return ("not allowed")
             db.execute(
                 'INSERT INTO post (title, body, author_id)'
                 ' VALUES (?, ?, ?)',
